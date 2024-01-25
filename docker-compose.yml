@@ -1,0 +1,51 @@
+services:
+  # MOCBOT
+  bot:
+    build: ./bot
+    restart: unless-stopped
+    volumes:
+      - ./bot/config.yml:/app/config.yml:ro
+      - ./bot/requirements.txt:/app/requirements.txt:ro
+    depends_on:
+      - mysql
+      - lavalink
+    networks:
+      - api
+      - lavalink
+  # MOCBOT API
+  api:
+    build: ./api/
+    restart: unless-stopped
+    env_file:
+      - ./api/.env
+    depends_on:
+      - mysql
+    networks:
+      - backend
+      - api
+  # MySQL Server
+  mysql:
+    image: "mysql/mysql-server:8.0"
+    restart: unless-stopped
+    env_file:
+      - ./mysql/.env
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/data:/docker-entrypoint-initdb.d/
+    networks:
+      - backend
+  # Lavalink Server
+  lavalink:
+    image: ghcr.io/lavalink-devs/lavalink:4-alpine
+    restart: unless-stopped
+    volumes:
+      - ./lavalink/application.yml:/opt/Lavalink/application.yml:ro
+      - ./lavalink/plugins/:/opt/Lavalink/plugins/
+    networks:
+      - lavalink
+volumes:
+  mysql_data:
+networks:
+  backend:
+  api:
+  lavalink:

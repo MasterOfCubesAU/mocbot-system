@@ -1,0 +1,9 @@
+# Global
+.env
+
+# MySQL Server
+mysql/data/*
+!mysql/data/schema.sql
+
+# Lavalink
+lavalink/application.yml

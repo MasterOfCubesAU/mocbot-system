@@ -1,0 +1,6 @@
+[submodule "bot"]
+	path = bot
+	url = https://github.com/MasterOfCubesAU/MOCBOT
+[submodule "api"]
+	path = api
+	url = https://github.com/MasterOfCubesAU/mocbot-api
