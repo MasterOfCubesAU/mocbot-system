@@ -40,23 +40,32 @@ MOCBOT is intended to be deployed as a whole system. Ensure you have installed t
 
 ### Setup
 
+```bash
+./setup.sh
+```
+
+- This will generate a `config.yml` from the template `config.template.yml` and populate the `API_KEY` field with a randomly generated API Key.
+- It will also generate a simple SQL script that will insert the API Key hash into the database automatically.
+- This script will also perform additional setup steps as required, follow the prompts as required.
+
 #### MOCBOT API
 
-Generate a `.env` file within `api/` using [.env.template](./api/.env.template) as a guide.
+- Generate a `.env` file within `api/` using [.env.template](./api/.env.template) as a guide.
 
 #### MOCBOT
 
-Generate a `config.yml` file within `bot/` using [config.template.yml](./bot/config.template.yml) as a guide.
+- Generate a `config.yml` file within `bot/` using [config.template.yml](./bot/config.template.yml) as a guide.
+- **Please note that if you have already run the `setup.sh` script, the script will have already generated a `config.yml` for you.**
 
 #### Lavalink
 
-Generate an `application.yml` file within `lavalink/` using [this](https://lavalink.dev/configuration/) as a guide.
+- Generate an `application.yml` file within `lavalink/` using [this](https://lavalink.dev/configuration/) as a guide.
 
 #### MySQL Server
 
-Generate a `.env` file within `mysql/` using [.env.template](./mysql/.env.template) as a guide.
+- Generate a `.env` file within `mysql/` using [.env.template](./mysql/.env.template) as a guide.
 
-If you have a MySQL dump which adheres to the MOCBOT [schema](./mysql/data//schema.sql), place it in `mysql/data` so that the DB can be initialised on first time setup.
+- If you have a MySQL dump which adheres to the MOCBOT [schema](./mysql/data//schema.sql), place it in `mysql/data` so that the DB can be initialised on first time setup.
 
 Once the above setup is complete, run:
 
