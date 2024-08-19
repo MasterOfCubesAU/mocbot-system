@@ -44,11 +44,10 @@ services:
       - backend
   # Lavalink Server
   lavalink:
-    image: ghcr.io/lavalink-devs/lavalink:4-alpine
+    image: ghcr.io/lavalink-devs/lavalink:4.0.7-alpine
     restart: unless-stopped
     volumes:
       - ./lavalink/application.yml:/opt/Lavalink/application.yml:ro
-      - ./lavalink/plugins/:/opt/Lavalink/plugins/
     networks:
       - lavalink
 volumes:
